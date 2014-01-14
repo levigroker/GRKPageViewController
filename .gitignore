@@ -1,0 +1,5 @@
+*.lock
+.DS_Store
+xcuserdata
+project.xcworkspace
+Build

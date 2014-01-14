@@ -1,0 +1,27 @@
+Copyright (c) 2013 Levi Brown <mailto:levigroker@gmail.com>
+This work is licensed under the Creative Commons Attribution 3.0
+Unported License. To view a copy of this license, visit
+http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
+Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041,
+USA.
+
+The above attribution and this license must accompany any version of the source code.
+Visible attribution in any binary distributable including this work (or derivatives)
+is not required, but would be appreciated.
+
+1. DISCLAIMER OF WARRANTY.  ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS
+AND WARRANTIES, INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A
+PARTICULAR PURPOSE OR NON-INFRINGEMENT ARE DISCLAIMED, EXCEPT TO THE EXTENT THAT
+THESE DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+
+2. LIMITATION OF LIABILITY.  TO THE EXTENT NOT PROHIBITED BY LAW, IN NO EVENT
+WILL THE AUTHOR OR THE AUTHOR'S LICENSORS BE LIABLE FOR ANY LOST REVENUE, PROFIT
+OR DATA, OR FOR SPECIAL, INDIRECT, CONSEQUENTIAL, INCIDENTAL OR PUNITIVE
+DAMAGES, HOWEVER CAUSED REGARDLESS OF THE THEORY OF LIABILITY, ARISING OUT OF OR
+RELATED TO THE USE OF OR INABILITY TO USE SOFTWARE, EVEN IF THE AUTHOR HAS BEEN
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.  In no event will the author's
+liability to you, whether in contract, tort (including negligence), or
+otherwise, exceed the amount paid by you for Software under this Agreement. The
+foregoing limitations will apply even if the above stated warranty fails of its
+essential purpose. Some states do not allow the exclusion of incidental or
+consequential damages, so some of the terms above may not be applicable to you.
