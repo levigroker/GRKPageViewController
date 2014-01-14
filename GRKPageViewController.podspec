@@ -1,8 +1,10 @@
 Pod::Spec.new do |s|
   s.name         = "GRKPageViewController"
   s.version      = "1.0"
-  s.summary      = "A container UIViewController providing paginated scrolling between configured view controllers. Similar to UIPageViewController, but with added control and feedback.
-"
+  s.summary      = "Similar to UIPageViewController, but with added control and feedback."
+  s.description  = <<-DESC
+		A container UIViewController providing paginated scrolling between configured view controllers. Similar to UIPageViewController, but with added control and feedback.
+    DESC
   s.homepage     = "https://github.com/levigroker/GRKPageViewController"
   s.license      = 'Creative Commons Attribution 3.0 Unported License'
   s.author       = { "Levi Brown" => "levigroker@gmail.com" }
