@@ -257,6 +257,7 @@
         if (self.internalIndex != firstNeededPageIndex)
         {
             self.internalIndex = firstNeededPageIndex;
+            self.pendingIndex = self.internalIndex;
 
             if ([self.delegate respondsToSelector:@selector(changedIndex:forPageViewController:)])
             {
