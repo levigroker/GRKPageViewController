@@ -85,6 +85,8 @@
     self.scrollView.contentSize = contentSize;
 
     [self tilePages];
+    //We adjust existing pages sizes since tilePages does not modify a page size once it is created.
+    [self adjustFramesOfVisiblePages];
 }
 
 #pragma mark - Acessors
@@ -146,20 +148,7 @@
 
 - (void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
 {
-    //Recalculate contentSize based on current orientation
-    self.scrollView.contentSize = [self contentSizeForPagingScrollView];
-
-    //Adjust the frames of each visible page
-    NSUInteger count = self.pages.count;
-    for (NSUInteger index = 0; index < count; ++index)
-    {
-        id obj = [self.pages objectAtIndex:index];
-        if (![obj isEqual:[NSNull null]])
-        {
-            UIViewController *page = (UIViewController *)obj;
-            page.view.frame = [self frameForPageAtIndex:index];
-        }
-    }
+    //Recalculate scrollView contentSize and page size will be updated by the call to initPages from viewWillLayoutSubviews, so we don't need to do that again here.
 
     //Adjust contentOffset to preserve page location based on values collected prior to location
     CGFloat pageWidth = self.scrollView.bounds.size.width;
@@ -301,6 +290,21 @@
 }
 
 #pragma mark - Frame Calculations
+
+- (void)adjustFramesOfVisiblePages
+{
+    //Adjust the frames of each visible page
+    NSUInteger count = self.pages.count;
+    for (NSUInteger index = 0; index < count; ++index)
+    {
+        id obj = [self.pages objectAtIndex:index];
+        if (![obj isEqual:[NSNull null]])
+        {
+            UIViewController *page = (UIViewController *)obj;
+            page.view.frame = [self frameForPageAtIndex:index];
+        }
+    }
+}
 
 - (CGRect)frameForPagingScrollView
 {
