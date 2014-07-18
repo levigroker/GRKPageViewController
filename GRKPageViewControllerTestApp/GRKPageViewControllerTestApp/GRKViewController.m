@@ -13,9 +13,12 @@
 @property (nonatomic,weak) GRKPageViewController *pageViewController;
 @property (nonatomic,weak) IBOutlet UISwitch *animatedSwitch;
 @property (nonatomic,weak) IBOutlet UIPageControl *pageControl;
+@property (nonatomic,weak) IBOutlet UISegmentedControl *segmentedControl;
+@property (nonatomic,weak) IBOutlet UISlider *pageCountSlider;
 
-- (IBAction)buttonAction:(UIButton *)button;
+- (IBAction)selectPageAction:(UISegmentedControl *)segmentedControl;
 - (IBAction)pageControlAction;
+- (IBAction)pageCountAction:(UISlider *)sender;
 
 @end
 
@@ -30,16 +33,31 @@
         self.pageViewController.dataSource = self;
         self.pageViewController.delegate = self;
         [self.pageViewController setCurrentIndex:1 animated:NO];
-        self.pageControl.numberOfPages = [self pageCount];
-        self.pageControl.currentPage = self.pageViewController.currentIndex;
+        [self setup];
     }
+}
+
+- (void)setup
+{
+    [self.pageViewController reloadData];
+    NSUInteger pageCount = [self pageCountForPageViewController:self.pageViewController];
+    NSUInteger currentIndex = self.pageViewController.currentIndex;
+    self.pageControl.numberOfPages = pageCount;
+    self.pageControl.currentPage = currentIndex;
+
+    [self.segmentedControl removeAllSegments];
+    for (NSInteger i = pageCount; i > 0; --i)
+    {
+        [self.segmentedControl insertSegmentWithTitle:[NSString stringWithFormat:@"%d", (int)i] atIndex:0 animated:NO];
+    }
+    self.segmentedControl.selectedSegmentIndex = currentIndex;
 }
 
 #pragma mark - Actions
 
-- (IBAction)buttonAction:(UIButton *)button
+- (IBAction)selectPageAction:(UISegmentedControl *)segmentedControl;
 {
-    [self.pageViewController setCurrentIndex:button.tag animated:self.animatedSwitch.on];
+    [self.pageViewController setCurrentIndex:segmentedControl.selectedSegmentIndex animated:self.animatedSwitch.on];
 }
 
 - (IBAction)pageControlAction
@@ -48,31 +66,43 @@
     [self.pageViewController setCurrentIndex:(NSUInteger)currentPage animated:self.animatedSwitch.on];
 }
 
-#pragma mark - GRKPageViewControllerDataSource
-
-- (NSUInteger)pageCount
+- (IBAction)pageCountAction:(UISlider *)sender
 {
-    return 3;
+    [self setup];
 }
 
-- (UIViewController *)viewControllerForIndex:(NSUInteger)index
+#pragma mark - GRKPageViewControllerDataSource
+
+- (NSUInteger)pageCountForPageViewController:(GRKPageViewController *)controller
+{
+    return (NSUInteger)self.pageCountSlider.value;
+}
+
+- (UIViewController *)viewControllerForIndex:(NSUInteger)index forPageViewController:(GRKPageViewController *)controller
 {
     UIViewController *retVal = [self.storyboard instantiateViewControllerWithIdentifier:@"page"];
     
-    switch (index) {
-        case 0:
-            retVal.view.backgroundColor = [UIColor redColor];
-            break;
-        case 1:
-            retVal.view.backgroundColor = [UIColor orangeColor];
-            break;
-        case 2:
-            retVal.view.backgroundColor = [UIColor yellowColor];
-            break;
-        default:
-            NSLog(@"Page index %lu out of range.", (unsigned long)index);
-            break;
+    static NSArray *pageColors = nil;
+    if (!pageColors)
+    {
+        pageColors = @[[UIColor redColor],[UIColor orangeColor],[UIColor yellowColor],[UIColor greenColor],[UIColor blueColor]];
     }
+    
+    UIColor *color = nil;
+    if (index < pageColors.count)
+    {
+        color = pageColors[index];
+    }
+    else
+    {
+        NSLog(@"Page index %lu out of range.", (unsigned long)index);
+        CGFloat red = arc4random_uniform(101) / 100.0f;
+        CGFloat green = arc4random_uniform(101) / 100.0f;
+        CGFloat blue = arc4random_uniform(101) / 100.0f;
+        color = [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+    }
+
+    retVal.view.backgroundColor = color;
     
     return retVal;
 }
@@ -88,6 +118,7 @@
 {
     NSLog(@"Current Index: %lu", (unsigned long)index);
     self.pageControl.currentPage = index;
+    self.segmentedControl.selectedSegmentIndex = index;
 }
 
 @end

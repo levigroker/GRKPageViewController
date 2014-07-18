@@ -2,7 +2,7 @@
 //  GRKPageViewController.h
 //
 //  Created by Levi Brown on November 18, 2013.
-//  Copyright (c) 2013 Levi Brown <mailto:levigroker@gmail.com>
+//  Copyright (c) 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -26,13 +26,15 @@
 
 /**
  Called by the `GRKPageViewController` to determine how many pages (view controllers) will be presented.
+ @param controller A reference to the `GRKPageViewController` sending the message.
  */
-- (NSUInteger)pageCount;
+- (NSUInteger)pageCountForPageViewController:(GRKPageViewController *)controller;
 /**
  Called by the `GRKPageViewController` to retrieve an instance of the view controller to display at the given index.
  @param index The index for which to return an instance of a `UIViewController`.
+ @param controller A reference to the `GRKPageViewController` sending the message.
  */
-- (UIViewController *)viewControllerForIndex:(NSUInteger)index;
+- (UIViewController *)viewControllerForIndex:(NSUInteger)index forPageViewController:(GRKPageViewController *)controller;
 
 @end
 
@@ -88,5 +90,11 @@
  If `NO` no animation will take place and the new index will take effect immediately.
  */
 - (void)setCurrentIndex:(NSUInteger)index animated:(BOOL)animated;
+
+/**
+ Updates the displayed pages from the data source.
+ This should be called when updates to the data source should be reflected in the page view controller.
+ */
+- (void)reloadData;
 
 @end

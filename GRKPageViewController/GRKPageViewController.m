@@ -2,7 +2,7 @@
 //  GRKPageViewController.m
 //
 //  Created by Levi Brown on November 18, 2013.
-//  Copyright (c) 2013 Levi Brown <mailto:levigroker@gmail.com>
+//  Copyright (c) 2013, 2014 Levi Brown <mailto:levigroker@gmail.com>
 //  This work is licensed under the Creative Commons Attribution 3.0
 //  Unported License. To view a copy of this license, visit
 //  http://creativecommons.org/licenses/by/3.0/ or send a letter to Creative
@@ -125,6 +125,13 @@
     return self.internalIndex;
 }
 
+#pragma mark Implementation
+
+- (void)reloadData
+{
+    [self initPages];
+}
+
 #pragma mark Rotation
 
 - (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
@@ -160,7 +167,7 @@
 
 - (void)updatePageCount
 {
-    self.pageCount = [self.dataSource pageCount];
+    self.pageCount = [self.dataSource pageCountForPageViewController:self];
     if (!self.pages)
     {
         self.pages = [NSMutableArray arrayWithCapacity:self.pageCount];
@@ -206,10 +213,6 @@
     firstNeededPageIndex = MAX(firstNeededPageIndex, 0);
     lastNeededPageIndex  = MIN(lastNeededPageIndex, (NSInteger)self.pageCount - 1);
 
-    //DEBUG
-    //NSLog(@"firstNeededPageIndex: %d, lastNeededPageIndex: %d", firstNeededPageIndex, lastNeededPageIndex);
-    //END
-
     for (NSUInteger index = 0; index < self.pageCount; ++index)
     {
         id obj = [self.pages objectAtIndex:index];
@@ -228,7 +231,7 @@
             //Be sure we have the pages we need
             if ([obj isEqual:[NSNull null]])
             {
-                UIViewController *page = [self.dataSource viewControllerForIndex:index];
+                UIViewController *page = [self.dataSource viewControllerForIndex:index forPageViewController:self];
                 [self addPage:page withIndex:index];
             }
         }
@@ -254,11 +257,6 @@
             }
         }
     }
-
-    //DEBUG
-    //NSString *descriptions = [self.pages componentsJoinedByString:@", "];
-    //NSLog(@"Pages: [%@]", descriptions);
-    //END
 }
 
 - (void)removePage:(UIViewController *)page withIndex:(NSUInteger)index

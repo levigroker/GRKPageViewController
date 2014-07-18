@@ -14,7 +14,7 @@ controllers. Similar to UIPageViewController, but with added control and feedbac
 
 If you're using [CocoPods](http://cocopods.org) it's as simple as adding this to your `Podfile`:
 
-	pod 'GRKPageViewController', '~> 1.0'
+	pod 'GRKPageViewController', '~> 1.1'
 
 otherwise, simply add `GRKPageViewController.h` and `GRKPageViewController.m` to your
 project.
@@ -27,8 +27,8 @@ the delegate.
 
 Your data source (`GRKPageViewControllerDataSource`) must implement:
 
-	- (NSUInteger)pageCount;
-	- (UIViewController *)viewControllerForIndex:(NSUInteger)index;
+	- (NSUInteger)pageCountForPageViewController:(GRKPageViewController *)controller;
+	- (UIViewController *)viewControllerForIndex:(NSUInteger)index forPageViewController:(GRKPageViewController *)controller;
 	
 to specify the number of pages and provide the corresponding view controller objects.
 
