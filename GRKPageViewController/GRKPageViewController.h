@@ -79,7 +79,13 @@
  */
 @property (nonatomic,weak) id<GRKPageViewControllerDelegate> delegate;
 /**
- The index of the currently displayed view controller.
+ * If `NO` user touches do not initiate scrolling/paging behavior.
+ * If `YES` user touches allow scrolling between the cofigured view controllers.
+ * Defaults to `YES`.
+ */
+@property (nonatomic,assign) BOOL scrollEnabled;
+/**
+ * The index of the currently displayed view controller.
  */
 @property (nonatomic,assign) NSUInteger currentIndex;
 

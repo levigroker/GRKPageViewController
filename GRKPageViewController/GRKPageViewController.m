@@ -34,6 +34,42 @@
 
 #pragma mark - Lifecycle
 
+- (instancetype)init
+{
+    if ((self = [super init]))
+    {
+        [self setup];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder]))
+    {
+        [self setup];
+    }
+    
+    return self;
+}
+
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    if ((self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]))
+    {
+        [self setup];
+    }
+    
+    return self;
+}
+
+- (void)setup
+{
+    //Defaults
+    self.scrollEnabled = YES;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -42,6 +78,7 @@
     self.automaticallyAdjustsScrollViewInsets = NO;
 
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.scrollView.scrollEnabled = self.scrollEnabled;
     self.scrollView.pagingEnabled = YES;
     self.scrollView.backgroundColor = [UIColor clearColor];
     self.scrollView.showsVerticalScrollIndicator = NO;
@@ -90,6 +127,12 @@
 }
 
 #pragma mark - Acessors
+
+- (void)setScrollEnabled:(BOOL)scrollEnabled
+{
+    _scrollEnabled = scrollEnabled;
+    self.scrollView.scrollEnabled = scrollEnabled;
+}
 
 - (void)setCurrentIndex:(NSUInteger)currentIndex
 {
