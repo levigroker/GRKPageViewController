@@ -25,14 +25,14 @@
 @protocol GRKPageViewControllerDataSource <NSObject>
 
 /**
- Called by the `GRKPageViewController` to determine how many pages (view controllers) will be presented.
- @param controller A reference to the `GRKPageViewController` sending the message.
+ * Called by the `GRKPageViewController` to determine how many pages (view controllers) will be presented.
+ * @param controller A reference to the `GRKPageViewController` sending the message.
  */
 - (NSUInteger)pageCountForPageViewController:(GRKPageViewController *)controller;
 /**
- Called by the `GRKPageViewController` to retrieve an instance of the view controller to display at the given index.
- @param index The index for which to return an instance of a `UIViewController`.
- @param controller A reference to the `GRKPageViewController` sending the message.
+ * Called by the `GRKPageViewController` to retrieve an instance of the view controller to display at the given index.
+ * @param index The index for which to return an instance of a `UIViewController`.
+ * @param controller A reference to the `GRKPageViewController` sending the message.
  */
 - (UIViewController *)viewControllerForIndex:(NSUInteger)index forPageViewController:(GRKPageViewController *)controller;
 
@@ -46,19 +46,19 @@
 
 @optional
 /**
- Called continiously with the indexOffset as a transition is underway from one view controller to another.
- This could be used to similarlly transition another view as the page index is changing.
- @param indexOffset A float whose integer value is the current index and whose floating point value is the
- percentage of transition from one index to the next. i.e. this might return 1.35 which indicates we are
- transitioning betwen index 1 and index 2, and 65% of the page at index 1 is showing, while 35% of the
- page at index 2 is showing.
- @param controller A reference to the `GRKPageViewController` sending the message.
+ * Called continiously with the indexOffset as a transition is underway from one view controller to another.
+ * This could be used to similarlly transition another view as the page index is changing.
+ * @param indexOffset A float whose integer value is the current index and whose floating point value is the
+ * percentage of transition from one index to the next. i.e. this might return 1.35 which indicates we are
+ * transitioning betwen index 1 and index 2, and 65% of the page at index 1 is showing, while 35% of the
+ * page at index 2 is showing.
+ * @param controller A reference to the `GRKPageViewController` sending the message.
  */
 - (void)changedIndexOffset:(CGFloat)indexOffset forPageViewController:(GRKPageViewController *)controller;
 /**
- Called once when a new view controller page is fully displayed.
- @param index The index of the currently displayed view controller.
- @param controller A reference to the `GRKPageViewController` sending the message.
+ * Called once when a new view controller page is fully displayed.
+ * @param index The index of the currently displayed view controller.
+ * @param controller A reference to the `GRKPageViewController` sending the message.
  */
 - (void)changedIndex:(NSUInteger)index forPageViewController:(GRKPageViewController *)controller;
 
@@ -71,11 +71,11 @@
 @interface GRKPageViewController : UIViewController <UIScrollViewDelegate>
 
 /**
- The object to use as the `GRKPageViewControllerDataSource`
+ * The object to use as the `GRKPageViewControllerDataSource`
  */
 @property (nonatomic,weak) id<GRKPageViewControllerDataSource> dataSource;
 /**
- The object to use as the `GRKPageViewControllerDelegate`
+ * The object to use as the `GRKPageViewControllerDelegate`
  */
 @property (nonatomic,weak) id<GRKPageViewControllerDelegate> delegate;
 /**
@@ -90,16 +90,16 @@
 @property (nonatomic,assign) NSUInteger currentIndex;
 
 /**
- Displays the view controller at the given index, optionally animating the transition.
- @param index The index of the view controller to transition to.
- @param animated If `YES` then animate the transition from the current index to the given index.
- If `NO` no animation will take place and the new index will take effect immediately.
+ * Displays the view controller at the given index, optionally animating the transition.
+ * @param index The index of the view controller to transition to.
+ * @param animated If `YES` then animate the transition from the current index to the given index.
+ * If `NO` no animation will take place and the new index will take effect immediately.
  */
 - (void)setCurrentIndex:(NSUInteger)index animated:(BOOL)animated;
 
 /**
- Updates the displayed pages from the data source.
- This should be called when updates to the data source should be reflected in the page view controller.
+ * Updates the displayed pages from the data source.
+ * This should be called when updates to the data source should be reflected in the page view controller.
  */
 - (void)reloadData;
 
