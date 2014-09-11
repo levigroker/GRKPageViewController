@@ -14,7 +14,7 @@ controllers. Similar to UIPageViewController, but with added control and feedbac
 
 If you're using [CocoPods](http://cocopods.org) it's as simple as adding this to your `Podfile`:
 
-	pod 'GRKPageViewController', '~> 1.1'
+	pod 'GRKPageViewController'
 
 otherwise, simply add `GRKPageViewController.h` and `GRKPageViewController.m` to your
 project.
