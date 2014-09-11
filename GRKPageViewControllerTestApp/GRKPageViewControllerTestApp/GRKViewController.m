@@ -12,6 +12,7 @@
 
 @property (nonatomic,weak) GRKPageViewController *pageViewController;
 @property (nonatomic,weak) IBOutlet UISwitch *animatedSwitch;
+@property (nonatomic,weak) IBOutlet UISwitch *scrollEnabledSwitch;
 @property (nonatomic,weak) IBOutlet UIPageControl *pageControl;
 @property (nonatomic,weak) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic,weak) IBOutlet UISlider *pageCountSlider;
@@ -19,6 +20,7 @@
 - (IBAction)selectPageAction:(UISegmentedControl *)segmentedControl;
 - (IBAction)pageControlAction;
 - (IBAction)pageCountAction:(UISlider *)sender;
+- (IBAction)scrollEnabledAction:(UISwitch *)sender;
 
 @end
 
@@ -51,6 +53,7 @@
         [self.segmentedControl insertSegmentWithTitle:[NSString stringWithFormat:@"%d", (int)i] atIndex:0 animated:NO];
     }
     self.segmentedControl.selectedSegmentIndex = currentIndex;
+    self.scrollEnabledSwitch.on = self.pageViewController.scrollEnabled;
 }
 
 #pragma mark - Actions
@@ -69,6 +72,11 @@
 - (IBAction)pageCountAction:(UISlider *)sender
 {
     [self setup];
+}
+
+- (IBAction)scrollEnabledAction:(UISwitch *)sender
+{
+    self.pageViewController.scrollEnabled = sender.on;
 }
 
 #pragma mark - GRKPageViewControllerDataSource

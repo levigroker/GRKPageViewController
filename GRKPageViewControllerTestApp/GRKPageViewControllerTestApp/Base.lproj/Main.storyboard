@@ -18,35 +18,35 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ma9-HR-4e7">
-                                <rect key="frame" x="0.0" y="20" width="320" height="409"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="391"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="X1y-Xd-jJG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="150" id="X1y-Xd-jJG"/>
                                 </constraints>
                                 <connections>
                                     <segue destination="dZI-c2-puf" kind="embed" id="Eun-Kx-h9N"/>
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3sY-rk-WgJ">
-                                <rect key="frame" x="0.0" y="429" width="320" height="37"/>
+                                <rect key="frame" x="0.0" y="411" width="320" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="pageControlAction" destination="vXZ-lx-hvc" eventType="valueChanged" id="AbA-T0-u8N"/>
                                 </connections>
                             </pageControl>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="3" minValue="1" maxValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="hZx-Iv-lj0" userLabel="Horizontal Slider - Page Count">
-                                <rect key="frame" x="158" y="529" width="144" height="31"/>
+                                <rect key="frame" x="178" y="529" width="124" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="140" id="9ka-2F-d1i"/>
+                                    <constraint firstAttribute="width" constant="120" id="9ka-2F-d1i"/>
                                 </constraints>
                                 <connections>
                                     <action selector="pageCountAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Qca-y6-nDn"/>
                                 </connections>
                             </slider>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d09-Fb-Xur">
-                                <rect key="frame" x="20" y="466" width="280" height="29"/>
+                                <rect key="frame" x="20" y="448" width="280" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <segments>
                                     <segment title="First"/>
@@ -57,7 +57,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Page Count:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXD-JL-5u3">
-                                <rect key="frame" x="189" y="504" width="81" height="17"/>
+                                <rect key="frame" x="199" y="504" width="81" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -74,23 +74,43 @@
                                 <rect key="frame" x="37" y="528" width="51" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </switch>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tJb-ui-baj">
+                                <rect key="frame" x="106" y="528" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="scrollEnabledAction:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Lpr-CX-Ldz"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="57" translatesAutoresizingMaskIntoConstraints="NO" id="vC9-gD-7c4">
+                                <rect key="frame" x="102" y="486" width="57" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Scroll
+Enabled:</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ma9-HR-4e7" firstAttribute="top" secondItem="QBP-fB-8SZ" secondAttribute="bottom" id="9nC-ev-Goy"/>
                             <constraint firstItem="d09-Fb-Xur" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="Ac1-SI-Mf0"/>
-                            <constraint firstItem="UDw-kO-ERL" firstAttribute="top" secondItem="d09-Fb-Xur" secondAttribute="bottom" constant="10" id="FGq-JO-iyL"/>
+                            <constraint firstItem="tJb-ui-baj" firstAttribute="centerY" secondItem="Gry-BR-yrQ" secondAttribute="centerY" id="Do2-SD-d42"/>
                             <constraint firstItem="ma9-HR-4e7" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Kjr-Qv-OwO"/>
                             <constraint firstItem="KXD-JL-5u3" firstAttribute="centerX" secondItem="hZx-Iv-lj0" secondAttribute="centerX" constant="-0.5" id="PIX-xd-ggK"/>
                             <constraint firstItem="Gry-BR-yrQ" firstAttribute="centerX" secondItem="UDw-kO-ERL" secondAttribute="centerX" constant="0.5" id="Pxu-Tk-WL7"/>
                             <constraint firstAttribute="trailing" secondItem="3sY-rk-WgJ" secondAttribute="trailing" id="TV3-Zi-DXB"/>
                             <constraint firstItem="SWL-42-lE4" firstAttribute="top" secondItem="Gry-BR-yrQ" secondAttribute="bottom" constant="9" id="Y4G-l4-RPQ"/>
+                            <constraint firstItem="vC9-gD-7c4" firstAttribute="leading" secondItem="UDw-kO-ERL" secondAttribute="trailing" constant="8" id="Y6w-SF-cKQ"/>
                             <constraint firstAttribute="trailing" secondItem="ma9-HR-4e7" secondAttribute="trailing" id="YI2-I8-Gd7"/>
                             <constraint firstItem="d09-Fb-Xur" firstAttribute="top" secondItem="3sY-rk-WgJ" secondAttribute="bottom" id="a8v-fh-ubW"/>
                             <constraint firstItem="Gry-BR-yrQ" firstAttribute="top" secondItem="UDw-kO-ERL" secondAttribute="bottom" constant="7" id="biu-A5-zYP"/>
                             <constraint firstItem="UDw-kO-ERL" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="28" id="blQ-t4-j2h"/>
                             <constraint firstItem="3sY-rk-WgJ" firstAttribute="top" secondItem="ma9-HR-4e7" secondAttribute="bottom" id="bzj-qp-EMj"/>
+                            <constraint firstItem="vC9-gD-7c4" firstAttribute="top" secondItem="d09-Fb-Xur" secondAttribute="bottom" constant="10" id="ctE-aX-u6N"/>
                             <constraint firstAttribute="trailing" secondItem="d09-Fb-Xur" secondAttribute="trailing" constant="20" id="i6W-vI-SJB"/>
+                            <constraint firstItem="tJb-ui-baj" firstAttribute="centerX" secondItem="vC9-gD-7c4" secondAttribute="centerX" id="ib1-f2-tRL"/>
+                            <constraint firstItem="tJb-ui-baj" firstAttribute="top" secondItem="vC9-gD-7c4" secondAttribute="bottom" constant="8" id="nwe-Pu-cUc"/>
                             <constraint firstItem="SWL-42-lE4" firstAttribute="top" secondItem="hZx-Iv-lj0" secondAttribute="bottom" constant="9" id="qn6-wk-gZW"/>
                             <constraint firstItem="KXD-JL-5u3" firstAttribute="baseline" secondItem="UDw-kO-ERL" secondAttribute="baseline" id="s6f-Mv-8Ez"/>
                             <constraint firstItem="3sY-rk-WgJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="t3y-Yd-TW2"/>
@@ -101,6 +121,7 @@
                         <outlet property="animatedSwitch" destination="Gry-BR-yrQ" id="eI5-4O-Mjz"/>
                         <outlet property="pageControl" destination="3sY-rk-WgJ" id="kJz-Mh-HzZ"/>
                         <outlet property="pageCountSlider" destination="hZx-Iv-lj0" id="kN9-r0-DdO"/>
+                        <outlet property="scrollEnabledSwitch" destination="tJb-ui-baj" id="NWz-8a-OBC"/>
                         <outlet property="segmentedControl" destination="d09-Fb-Xur" id="j6R-4K-3uf"/>
                     </connections>
                 </viewController>
@@ -117,7 +138,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1X8-yD-LDA"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="532-Pt-PLC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="409"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="391"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
